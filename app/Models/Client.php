@@ -9,5 +9,5 @@ class Client extends Model
 {
     use HasFactory;
     //Aqui se definen los campos que se puedan rellenar de manera masiva
-    protected $filliable = ['name','due','comments'];
+    protected $fillable = ['name','due','comments'];
 }
