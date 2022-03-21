@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container py-5 text-center">
+        <h1>Proyecto 2</h1>
         <h1>Listado de Clientes</h1>
         <a href="{{ route('client.create')}} "class="btn btn-primary">Crear Clientes</a>
 
