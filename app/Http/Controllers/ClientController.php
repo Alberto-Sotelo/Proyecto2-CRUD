@@ -16,7 +16,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('client.index');
+        $clients = Client::paginate(5); //Muestra y pagina a los clientes obteniendo la información directamente desde la base de datos
+        return view('client.index')
+                ->with('clients',$clients);
     }
 
     /**
@@ -40,7 +42,7 @@ class ClientController extends Controller
         //Reglas de validación para el formulario
         $request->validate([
             'name' => 'required|max:30',
-            'due' => 'required|gte:300'
+            'due' => 'required|gte:1'
         
         ]);
 
