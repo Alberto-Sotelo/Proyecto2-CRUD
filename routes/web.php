@@ -20,4 +20,3 @@ Route::get('/', function () {
 
 Route::resource('client', ClientController::class); //Esta linea nos crea rutas para acceder a los diferentes metodos del controlador cliente
 
-//Añado un comentario para realiar commit de prueba 2

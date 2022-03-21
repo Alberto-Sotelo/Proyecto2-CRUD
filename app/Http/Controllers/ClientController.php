@@ -71,7 +71,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        return view('client.form')
+            ->with('client',$client);
     }
 
     /**
@@ -83,7 +84,20 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        //Reglas de validación para el formulario
+        $request->validate([
+            'name' => 'required|max:30',
+            'due' => 'required|gte:1'
+        
+        ]);
+
+        $client->name = $request['name'];
+        $client->due = $request['due'];
+        $client->comments = $request['comments'];
+        $client->save();
+
+            Session::flash('mensaje', 'Registro editado con exito!'); //Alerta para el registro exitoso
+            return redirect()->route('client.index');
     }
 
     /**
