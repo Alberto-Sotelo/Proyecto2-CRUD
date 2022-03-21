@@ -23,7 +23,10 @@
                 <tr>
                     <td>{{ $client->name }}</td>
                     <td>{{ $client->due }}</td>
-                    <td>Editar - Eliminar</td>
+                    <td>
+                        <a href="{{ route('client.edit', $client) }}" class= "btn btn-warning">Editar </a> <!--Creamos ruta y botón para editar -->
+                        Eliminar
+                    </td>
                 </tr>    
                 @empty
                    <tr>
