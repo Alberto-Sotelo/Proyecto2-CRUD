@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -39,11 +40,13 @@ class ClientController extends Controller
         //Reglas de validación para el formulario
         $request->validate([
             'name' => 'required|max:30',
-            'due' => 'required|gte:500'
+            'due' => 'required|gte:300'
+        
         ]);
 
         $client = Client::create($request->only('name','due','comments'));
 
+            Session::flash('mensaje', 'Registro exitoso!'); //Alerta para el registro exitoso
             return redirect()->route('client.index');
     }
 
