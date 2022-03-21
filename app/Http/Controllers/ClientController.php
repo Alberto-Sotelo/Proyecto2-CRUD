@@ -96,7 +96,7 @@ class ClientController extends Controller
         $client->comments = $request['comments'];
         $client->save();
 
-            Session::flash('mensaje', 'Registro editado con exito!'); //Alerta para el registro exitoso
+            Session::flash('mensaje', 'Registro editado con exito!'); //Alerta para la edicion del registro
             return redirect()->route('client.index');
     }
 
@@ -108,6 +108,9 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        Session::flash('mensaje', 'Registro eliminado con exito!'); //Alerta para la eliminación de un registro
+           
+        return redirect()->route('client.index');
     }
 }
