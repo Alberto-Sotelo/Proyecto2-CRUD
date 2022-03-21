@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ClientController extends Controller
 {
@@ -24,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.form');
     }
 
     /**
@@ -35,7 +36,15 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Reglas de validación para el formulario
+        $request->validate([
+            'name' => 'required|max:30',
+            'due' => 'required|gte:500'
+        ]);
+
+        $client = Client::create($request->only('name','due','comments'));
+
+            return redirect()->route('client.index');
     }
 
     /**

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container py-5 text-center">
-        <h1>Hello world!</h1>
+        <h1>CRUD</h1>
         <a href="{{ route('client.index')}} "class="btn btn-primary">Clientes</a>
     </div>
 @endsection
