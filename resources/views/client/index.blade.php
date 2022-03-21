@@ -25,7 +25,12 @@
                     <td>{{ $client->due }}</td>
                     <td>
                         <a href="{{ route('client.edit', $client) }}" class= "btn btn-warning">Editar </a> <!--Creamos ruta y botón para editar -->
-                        Eliminar
+                        
+                        <form action="{{ route('client.destroy',$client) }}" method="post" class="d-inline"> <!--Formulario para elmininar y botón -->
+                        @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Desea eliminar cliente?')">Eliminar</button><!--Botón eliminar -->
+                        </form>
                     </td>
                 </tr>    
                 @empty
